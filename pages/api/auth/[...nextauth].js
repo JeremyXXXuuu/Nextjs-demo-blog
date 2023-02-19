@@ -17,7 +17,7 @@ export const authOptions = {
       id: "orosound",
       name: "Orosound",
       type: "oauth",
-      wellKnown: "http://localhost:8000/.well-known/openid-configuration",
+      wellKnown: process.env.ORO_OIDC_CONF,
       scope: "openid email profile",
       authorization: { params: { scope: "openid email profile" } },
       clientId: "foo",
