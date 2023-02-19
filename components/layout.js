@@ -4,13 +4,43 @@ import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
+import useSWR from "swr";
+
+// const fetcher = async (url) => {
+//   const res = await fetch(url);
+
+//   // If the status code is not in the range 200-299,
+//   // we still try to parse and throw it.
+//   if (!res.ok) {
+//     const error = new Error("An error occurred while fetching the data.");
+//     // Attach extra info to the error object.
+//     error.info = await res.json();
+//     error.status = res.status;
+//     throw error;
+//   }
+
+//   return res.json();
+// };
 
 let name = "user name";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }) {
   const { data: session } = useSession();
+
+  // const { data, error } = useSWR(
+  //   session
+  //     ? `http://localhost:8000/me?access_token=${session.accessToken}`
+  //     : null,
+  //   fetcher
+  // );
+
+  // if (!data) return <div>Loading...</div>;
+  // if (error) return <div>Failed to load</div>;
+  // console.log("data", data);
+  // console.log("error", error);
   if (session) {
+    console.log(session);
     return (
       <div className={styles.container}>
         <Head>
