@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 export const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   // Configure one or more authentication providers
   providers: [
     // GithubProvider({
@@ -23,7 +23,6 @@ export const authOptions = {
       clientId: "foo",
       clientSecret: "bar",
       idToken: true,
-
       //we can't get email and name in Id token
       //https://stackoverflow.com/questions/50740532/should-id-token-contain-claims-when-used-during-authorization-code-flow
       profile(profile) {
